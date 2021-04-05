@@ -23,8 +23,13 @@ public class EventListener implements Listener {
     @EventHandler
     public void onVehicleMove(VehicleMoveEvent event)
     {
+        if (!(event.getVehicle() instanceof  Minecart))
+        {
+            return;
+        }
+
         Minecart cart = (Minecart) event.getVehicle();
-        if (cart == null || cart.getPassengers().isEmpty())
+        if (cart.getPassengers().isEmpty())
         {
             return;
         }
@@ -44,13 +49,17 @@ public class EventListener implements Listener {
                         {
                             speed = 0.5;
                         }
+                        else if (line2.equalsIgnoreCase("slime"))
+                        {
+                            speed = 1;
+                        }
                         else if (line2.equalsIgnoreCase("zoom"))
                         {
-                            speed = 10;
+                            speed = 12;
                         }
                         else if (line2.equalsIgnoreCase("trappy"))
                         {
-                            speed = 25;
+                            speed = 50;
                         }
                         else
                         {
